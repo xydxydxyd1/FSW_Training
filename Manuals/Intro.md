@@ -9,7 +9,7 @@ In this exercise, you will get to explore the basics of programming on IntelliSa
 You'll notice a bunch of functions in the Training directory
 * `Drivers/` is for Hardware specific header files. Here live macros to help program things on the lowest layer of IntelliSat.
 * `Manuals/` is where certain IntelliSat and Orbital Platform guides are, as well as instructions for CubeIDE
-* `Startup/` is where the 
+* `Startup/` is where the startup script is located. It is an Assembly script that runs when the computer startups up. It is what called IntelliSat `main()`
 * `Src/` is where all the source code for IntelliSat is
     * `system_config/` and `tools` is where pre-existing IntelliSat code is
     * `playground/` is where you'd work. In particular you'll work on branch_main.c
@@ -19,7 +19,7 @@ You will also notice some `.ld` files. Those are *Linker Scripts*, important for
 # What is `branch_main()`
 Normally C programs have a `main()` function where all the code goes. But putting all the test code in the main function runs into an issue: 
 - Git doesn't like when 2 people change the exact same function. It won't merge them
-So if `main()` was edited by 2 seperate people in seperate branches with their test code, it would never merge. While there are many ways to work around this, our initial approach was:
+So if `main()` was edited by 2 separate people in separate branches with their test code, it would never merge. While there are many ways to work around this, our initial approach was:
 ```
 1. main() will call branch_main(). This function won't be defined initially.
 2. Whenever a new branch is created, the branch_main() there will be used for all sorts of testing
