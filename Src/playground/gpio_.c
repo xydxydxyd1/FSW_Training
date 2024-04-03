@@ -4,7 +4,7 @@ void gpio_low(GPIO_TypeDef *port, int pin) {
 	/*
 	 * Use bitwise operations on registers in the GPIO `port`
 	 * to turn a pin's value low.
-	 * Hint: BSSR
+	 * Hint: BSRR
 	 */
 
 }
