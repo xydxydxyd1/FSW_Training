@@ -9,7 +9,7 @@ In this exercise, you will get to explore the basics of programming on IntelliSa
 You'll notice a bunch of functions in the Training directory
 * `Drivers/` is for Hardware specific header files. Here live macros to help program things on the lowest layer of IntelliSat.
 * `Manuals/` is where certain IntelliSat and Orbital Platform guides are, as well as instructions for CubeIDE
-* `Startup/` is where the 
+* `Startup/` is where the startup script is located. It is an Assembly script that runs when the computer startups up. It is what called IntelliSat `main()`
 * `Src/` is where all the source code for IntelliSat is
     * `system_config/` and `tools` is where pre-existing IntelliSat code is
     * `playground/` is where you'd work. In particular you'll work on branch_main.c
