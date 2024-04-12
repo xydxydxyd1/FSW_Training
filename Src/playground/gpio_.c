@@ -1,42 +1,45 @@
 #include "gpio_.h"
 
-void gpio_low(GPIO_TypeDef *port, int pin) {
-	/*
-	 * Use bitwise operations on registers in the GPIO `port`
-	 * to turn a pin's value low.
-	 * Hint: BSRR
+void _gpio_low(GPIO_TypeDef *port, int pin) {
+	/**
+	 * Turning a bit low based on 8.5.7 of the STM32L4 Reference Manual
 	 */
 
+    if (pin > 15) {     // STM32L4 only has 16 pins per port
+        return;
+    }
+
+    port->BSRR &= ~(1 << pin);      // Reset the SET bit
+    port->BSRR |= 1 << (pin + 16);  // Set the RESET bit
 }
 
-void gpio_high(GPIO_TypeDef *port, int pin) {
-	/*
+void _gpio_high(GPIO_TypeDef *port, int pin) {
+	/**
 	 * same as gpio_low, but turns the value high
 	 */
 
+    if (pin > 15) {     // STM32L4 only has 16 pins per port
+        return;
+    }
+
+    port->BSRR |= (1 << pin);   // Set the SET bit
 }
 
-void gpio_set(GPIO_TypeDef *port, int pin, bool value) {
-	/*
-	 * A generalized function that uses gpio_high() or gpio_low()
-	 * depending on whether `value` is HIGH or LOW
-	 */
-
+void _gpio_set(GPIO_TypeDef *port, int pin, GPIO_VALUE value) {
+    if (value == GPIO_HIGH) {
+        _gpio_high(port, pin);
+    } else if (value == GPIO_LOW) {
+        _gpio_low(port, pin);
+    }
 }
 
-void gpio_configureMode(GPIO_TypeDef * port, int pin, int mode, int open_drain, int speed, int pull) {
-	/*
+void _gpio_configureMode(GPIO_TypeDef *port, int pin, GPIO_MODE mode, GPIO_OPEN_DRAIN open_drain, GPIO_SPEED speed, GPIO_PULL pull) {
+    /*
 	 * This will require setting a few registers
 	 * See if you can identify which registers, and why.
 	 * The process is the same though, bitwise operations on the registers
 	 */
 
-}
 
-void gpio_alternateFunction(GPIO_TypeDef * port, uint8_t pin, uint8_t afn) {
-	/*
-	 * Use the gpio_configureMode to get GPIO to Alternate Function.
-	 * Then set the Alternate Function registers to the right alternate function
-	 */
 
 }

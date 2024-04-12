@@ -12,4 +12,7 @@ void branch_main();
 int main() {
 	init_platform();
 	branch_main();
+
+    // Disable E2 (Heartbeat LED)
+    GPIOE->MODER &= ~(0b11 << (2 * 2));
 }
