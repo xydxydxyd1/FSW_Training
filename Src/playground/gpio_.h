@@ -25,13 +25,12 @@ enum GPIO_MODE {
 typedef enum GPIO_MODE GPIO_MODE;
 
 // options for GPIO Open Drain
-enum GPIO_OPEN_DRAIN {
-    GPIO_PUSH_PULL  = 0,
-    GPIO_OPEN_DRAIN = 1,
+typedef enum GPIO_OPEN_DRAIN {
+    GPIO_PP  = 0,	// Push Pull
+    GPIO_OD = 1,	// Open Drain
 
-    GPIO_DEFAULT_OPEN_DRAIN = GPIO_PUSH_PULL
-};
-typedef enum GPIO_OPEN_DRAIN GPIO_OPEN_DRAIN;
+    GPIO_DEFAULT_OPEN_DRAIN = GPIO_PP
+} GPIO_OPEN_DRAIN;
 
 // options for GPIO Speed
 enum GPIO_SPEED {
