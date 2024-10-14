@@ -20,7 +20,7 @@ void main_loop() {
 	if (currtime - last_blink_time >= 1000) {
 		last_blink_time = currtime;
 		last_blink_state = !last_blink_state;
-		led_a(last_blink_state);
+		led_d0(last_blink_state);
 	}
 }
 
